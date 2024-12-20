@@ -1,0 +1,21 @@
+﻿@using IDBeAcademy.ModelViews
+@model LoginUser
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="text-center title-page">LogOut</h1>
+
+<div class="login-form">
+    <form id="logout-form" method="post" asp-action="LogOut" asp-controller="Account">
+        <div class="text-center">
+            <p>Are you sure you want to LogOut?</p>
+        </div>
+        <div class="clearfix">
+            <div class="text-center no-gutters">
+                <button class="btn btn-danger" type="submit">LogOut</button>
+                <a class="btn btn-secondary" href="@Url.Action("Index", "Course")">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

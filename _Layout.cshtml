@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/IDBeAcademy.styles.css" asp-append-version="true" />
+    <style>
+        
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: transparent;
+            color: #fff;
+            background-image: url('/images/programmin.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh; 
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.8); 
+            color: white;
+            padding-top: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar h3 {
+                text-align: center;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-style: italic;
+            }
+
+            .sidebar .nav-item {
+                margin-bottom: 10px;
+            }
+
+            .sidebar .nav-link {
+                color: #fff;
+                font-weight: bold;
+                text-transform: uppercase;
+                font-size: 16px;
+            }
+
+                .sidebar .nav-link:hover {
+                    color: #f8f9fa;
+                }
+
+        
+        .navbar {
+            background-color: transparent !important;
+            position: fixed;
+            top: 0;
+            left: 250px; 
+            width: calc(100% - 250px); 
+            z-index: 999;
+            color: white;
+            font-weight: bold;
+            padding: 1rem; 
+            height: 60px; 
+        }
+
+        
+        .main-content {
+            margin-left: 250px; 
+            padding: 20px;
+            background-color: transparent;
+            color: white;
+        }
+
+        .footer {
+            background-color: transparent;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+        }
+
+        .card {
+            background-color: rgba(0, 0, 0, 0.5); 
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white;
+        }
+
+            .table th, .table td {
+                color: white; 
+            }
+
+        
+        .navbar .navbar-brand, .navbar-nav .nav-link {
+            font-weight: bold;
+        }
+
+       
+        .footer {
+            background-color: transparent;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="sidebar">
+        <h3 class="text-light">IDBeAcademy</h3>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Course" asp-action="Index">📚 Course</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Trainees" asp-action="Index">👨‍🎓 Trainees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Assignment" asp-action="Index">🎮 Assignment</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Trainer" asp-action="Index">👩‍🏫 Trainer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="TSP" asp-action="Index">🏢 TSP</a>
+            </li>
+        </ul>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">🎓 IDBeAcademy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="LogOut">Log Out</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+            <main role="main" class="pb-3">
+                <div class="card">
+                    <div class="card-body">
+                    </div>
+                </div>
+                @RenderBody()
+                @RenderSection("Scripts", required: false)
+            </main>
+        </div>
+    </div>
+    <footer class="footer text-muted mt-5">
+        <div class="container">
+            &copy; 2024 - IDBeAcademy - <a href="#">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

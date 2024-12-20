@@ -1,0 +1,40 @@
+﻿@using IDBeAcademy.ModelViews
+@model AccountUser
+
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="text-center title-page">Register</h1>
+<div class="login-form">
+    <form id="customer-form" asp-action="Register" method="post">
+        @Html.AntiForgeryToken() 
+        <div>
+            <div asp-validation-summary="All"></div>
+            <div class="form-group no-gutters">
+                <input asp-for="UserEmail" class="form-control" type="email" placeholder="Email" />
+                <span asp-validation-for="UserEmail"></span>
+            </div>
+            <div class="form-group no-gutters">
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password"></span>
+            </div>
+            <div class="form-group no-gutters">
+                <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+            <div class="text-center">
+                <div class="forgot-password">
+                    <a rel="nofollow" asp-action="LogIn">Already registered?</a>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="text-center no-gutters">
+                <button class="btn btn-primary" data-link-action="sign-in" type="submit">
+                    Sign up
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

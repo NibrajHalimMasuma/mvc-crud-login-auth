@@ -1,0 +1,43 @@
+﻿@model IDBeAcademy.Models.TSP
+@{
+    Layout = "_Layout";
+}
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="card mt-3">
+    <div class="card-header">
+        <h4>TSP Details</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div class="mt-3">
+  
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
